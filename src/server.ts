@@ -1,12 +1,15 @@
 import express from 'express';
+import dotenv from 'dotenv';
 import path from 'path';
 import http from 'http';
+
+dotenv.config();
 
 const app = express();
 const server = http.createServer(app);
 const io = require('socket.io')(server);
 
-server.listen(3000);
+server.listen(process.env.PORT);
 
 app.use(express.static(path.join(__dirname, '../public')));
 
